@@ -1,0 +1,212 @@
+object report: Treport
+  OldCreateOrder = False
+  Height = 241
+  HorizontalOffset = 292
+  VerticalOffset = 145
+  Width = 274
+  PPI = 96
+  object ReportConnection: TIBConnection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'C:\Program Files\Ampps\www\tasks\TASKS.FDB'
+    KeepConnection = False
+    Password = 'masterkey'
+    Transaction = SQLTransaction1
+    UserName = 'SYSDBA'
+    HostName = 'localhost'
+    CheckTransactionParams = False
+    left = 40
+    top = 24
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = ReportConnection
+    left = 128
+    top = 24
+  end
+  object SQLQuery1: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'FULLNAME'
+        DataType = ftString
+        Precision = -1
+        Size = 1020
+      end    
+      item
+        Name = 'TOTAL'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'PERIOD'
+        DataType = ftString
+        Precision = -1
+        Size = 80
+      end>
+    Active = True
+    Database = ReportConnection
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select fullname,count(name) AS TOTAL,monthname(date_court) AS PERIOD FROM PROMOTER INNER JOIN APPEALS'
+      'ON PROMOTER.ID=APPEALS.PROMOTER_ID'
+      'GROUP BY PERIOD,fullname'
+      'ORDER BY PERIOD'
+      ''
+    )
+    Params = <>
+    left = 40
+    top = 96
+    object SQLQuery1FULLNAME: TStringField
+      FieldKind = fkData
+      FieldName = 'FULLNAME'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1020
+    end
+    object SQLQuery1TOTAL: TLargeintField
+      FieldKind = fkData
+      FieldName = 'TOTAL'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLQuery1PERIOD: TStringField
+      FieldKind = fkData
+      FieldName = 'PERIOD'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+  end
+  object SQLQuery2: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'FULLNAME'
+        DataType = ftString
+        Precision = -1
+        Size = 1020
+      end    
+      item
+        Name = 'TOTAL'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'PERIOD'
+        DataType = ftSmallint
+        Precision = -1
+      end>
+    Active = True
+    Database = ReportConnection
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select fullname,count(name) AS TOTAL,extract(year from date_court) AS PERIOD FROM PROMOTER INNER JOIN APPEALS'
+      'ON PROMOTER.ID=APPEALS.PROMOTER_ID'
+      'GROUP BY PERIOD,fullname'
+      'ORDER BY PERIOD'
+    )
+    Params = <>
+    left = 128
+    top = 96
+    object SQLQuery2FULLNAME: TStringField
+      FieldKind = fkData
+      FieldName = 'FULLNAME'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1020
+    end
+    object SQLQuery2TOTAL: TLargeintField
+      FieldKind = fkData
+      FieldName = 'TOTAL'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLQuery2PERIOD: TSmallintField
+      FieldKind = fkData
+      FieldName = 'PERIOD'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object SQLQuery3: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'FULLNAME'
+        DataType = ftString
+        Precision = -1
+        Size = 1020
+      end    
+      item
+        Name = 'TOTAL'
+        DataType = ftLargeint
+        Precision = -1
+      end>
+    Active = True
+    Database = ReportConnection
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select fullname,count(name) AS TOTAL FROM PROMOTER INNER JOIN APPEALS'
+      'ON PROMOTER.ID=APPEALS.PROMOTER_ID'
+      'GROUP BY fullname'
+      'ORDER BY TOTAL'
+      ''
+    )
+    Params = <>
+    left = 208
+    top = 96
+    object SQLQuery3FULLNAME: TStringField
+      FieldKind = fkData
+      FieldName = 'FULLNAME'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1020
+    end
+    object SQLQuery3TOTAL: TLargeintField
+      FieldKind = fkData
+      FieldName = 'TOTAL'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    left = 40
+    top = 175
+  end
+  object DataSource2: TDataSource
+    DataSet = SQLQuery2
+    left = 128
+    top = 176
+  end
+  object DataSource3: TDataSource
+    DataSet = SQLQuery3
+    left = 208
+    top = 176
+  end
+end

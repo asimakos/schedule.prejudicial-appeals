@@ -1,0 +1,60 @@
+object Form1: TForm1
+  Left = 285
+  Height = 503
+  Top = 145
+  Width = 688
+  Caption = 'Υποθέσεις    Προσφυγών'
+  Menu = MainMenu1
+  LCLVersion = '2.0.6.0'
+  object MainMenu1: TMainMenu
+    left = 48
+    top = 32
+    object MenuItem1: TMenuItem
+      Caption = 'Διαχείριση'
+      object MenuItem2: TMenuItem
+        Caption = 'Εισαγωγή'
+        OnClick = MenuItem2Click
+      end
+      object MenuItem3: TMenuItem
+        Caption = 'Επεξεργασία'
+        OnClick = MenuItem3Click
+      end
+      object MenuItem7: TMenuItem
+        Caption = '-'
+      end
+      object MenuItem6: TMenuItem
+        Caption = 'Έξοδος'
+        OnClick = MenuItem6Click
+      end
+    end
+    object MenuItem4: TMenuItem
+      Caption = 'Ημερομηνίες'
+      object MenuItem5: TMenuItem
+        Caption = 'Επισκόπηση'
+        OnClick = MenuItem5Click
+      end
+      object MenuItem8: TMenuItem
+        Caption = 'Αναμονή  αποφάσεων'
+        OnClick = MenuItem8Click
+      end
+      object MenuItem9: TMenuItem
+        Caption = 'Τροποποιητική'
+        OnClick = MenuItem9Click
+      end
+    end
+    object MenuItem10: TMenuItem
+      Caption = 'Στοιχεία'
+      object MenuItem13: TMenuItem
+        Caption = 'Μηνιαία'
+      end
+      object MenuItem12: TMenuItem
+        Caption = 'Ετήσια'
+        OnClick = MenuItem12Click
+      end
+      object MenuItem11: TMenuItem
+        Caption = 'Συνολικά'
+        OnClick = MenuItem11Click
+      end
+    end
+  end
+end

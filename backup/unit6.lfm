@@ -1,0 +1,20 @@
+object Form5: TForm5
+  Left = 318
+  Height = 509
+  Top = 136
+  Width = 718
+  Caption = 'Διεκπεραίωση'
+  ClientHeight = 509
+  ClientWidth = 718
+  OnShow = FormShow
+  LCLVersion = '2.0.6.0'
+  object DBGrid1: TDBGrid
+    Left = 16
+    Height = 344
+    Top = 144
+    Width = 688
+    Color = clWindow
+    Columns = <>
+    TabOrder = 0
+  end
+end
