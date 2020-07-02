@@ -8,7 +8,7 @@ object report: Treport
   object ReportConnection: TIBConnection
     Connected = True
     LoginPrompt = False
-    DatabaseName = 'C:\Program Files\Ampps\www\tasks\TASKS.FDB'
+    DatabaseName = 'C:\Program Files\Ampps\www\schedule\TASKS.FDB'
     KeepConnection = False
     Password = 'masterkey'
     Transaction = SQLTransaction1

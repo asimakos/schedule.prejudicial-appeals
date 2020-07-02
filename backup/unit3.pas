@@ -44,6 +44,7 @@ type
     SQLQuery7NAME: TStringField;
     SQLQuery7PROMOTER_ID: TLongintField;
     SQLQuery8: TSQLQuery;
+    SQLQuery9: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
     SQLTransaction2: TSQLTransaction;
     StringField1: TStringField;

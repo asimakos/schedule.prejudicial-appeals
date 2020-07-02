@@ -8,7 +8,7 @@ object appeals: Tappeals
   object DBConnection: TIBConnection
     Connected = False
     LoginPrompt = False
-    DatabaseName = 'C:\Program Files\Ampps\www\tasks\TASKS.FDB'
+    DatabaseName = 'C:\Program Files\Ampps\www\schedule\TASKS.FDB'
     KeepConnection = False
     Password = 'masterkey'
     Transaction = SQLTransaction1
@@ -475,6 +475,14 @@ object appeals: Tappeals
     Transaction = SQLTransaction2
     Params = <>
     left = 32
+    top = 216
+  end
+  object SQLQuery9: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction2
+    Params = <>
+    left = 112
     top = 216
   end
 end

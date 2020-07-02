@@ -8,7 +8,7 @@ object report: Treport
   object ReportConnection: TIBConnection
     Connected = True
     LoginPrompt = False
-    DatabaseName = 'C:\Program Files\Ampps\www\tasks\TASKS.FDB'
+    DatabaseName = 'C:\Program Files\Ampps\www\schedule\TASKS.FDB'
     KeepConnection = False
     Password = 'masterkey'
     Transaction = SQLTransaction1
@@ -19,7 +19,7 @@ object report: Treport
     top = 24
   end
   object SQLTransaction1: TSQLTransaction
-    Active = True
+    Active = False
     Database = ReportConnection
     left = 128
     top = 24
@@ -86,7 +86,6 @@ object report: Treport
     end
   end
   object SQLQuery2: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'FULLNAME'
@@ -104,7 +103,6 @@ object report: Treport
         DataType = ftSmallint
         Precision = -1
       end>
-    Active = True
     Database = ReportConnection
     Transaction = SQLTransaction1
     SQL.Strings = (
@@ -146,7 +144,6 @@ object report: Treport
     end
   end
   object SQLQuery3: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'FULLNAME'
@@ -159,7 +156,6 @@ object report: Treport
         DataType = ftLargeint
         Precision = -1
       end>
-    Active = True
     Database = ReportConnection
     Transaction = SQLTransaction1
     SQL.Strings = (
