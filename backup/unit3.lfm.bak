@@ -1,0 +1,488 @@
+object appeals: Tappeals
+  OldCreateOrder = False
+  Height = 283
+  HorizontalOffset = 310
+  VerticalOffset = 141
+  Width = 343
+  PPI = 96
+  object DBConnection: TIBConnection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'C:\Program Files\Ampps\www\schedule\TASKS.FDB'
+    KeepConnection = False
+    Password = 'masterkey'
+    Transaction = SQLTransaction1
+    UserName = 'SYSDBA'
+    HostName = 'localhost'
+    CheckTransactionParams = False
+    left = 32
+    top = 16
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    left = 112
+    top = 16
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Database = DBConnection
+    left = 197
+    top = 16
+  end
+  object DataSource1: TDataSource
+    left = 32
+    top = 80
+  end
+  object SQLQuery2: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    left = 112
+    top = 80
+  end
+  object SQLQuery3: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'FULLNAME'
+        DataType = ftString
+        Precision = -1
+        Size = 1020
+      end>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select id,fullname from promoter'
+    )
+    Params = <>
+    left = 197
+    top = 80
+  end
+  object DataSource2: TDataSource
+    left = 32
+    top = 152
+  end
+  object SQLQuery4: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    left = 112
+    top = 152
+  end
+  object SQLTransaction2: TSQLTransaction
+    Active = False
+    Database = DBConnection
+    left = 192
+    top = 152
+  end
+  object SQLQuery5: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 1020
+      end    
+      item
+        Name = 'DATE_ENTRY'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATE_SUSPENDED'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATE_COURT'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATE_JUDGEMENT'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'PROMOTER_ID'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from appeals where (datediff(day,cast(''Now'' as date),cast(date_judgement as date)) between 1 and 4) and date_court IS NOT NULL'
+    )
+    Params = <>
+    left = 280
+    top = 16
+    object SQLQuery5ID: TLongintField
+      FieldKind = fkData
+      FieldName = 'ID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLQuery5NAME: TStringField
+      FieldKind = fkData
+      FieldName = 'NAME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1020
+    end
+    object SQLQuery5DATE_ENTRY: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_ENTRY'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery5DATE_SUSPENDED: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_SUSPENDED'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery5DATE_COURT: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_COURT'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery5DATE_JUDGEMENT: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_JUDGEMENT'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery5PROMOTER_ID: TLongintField
+      FieldKind = fkData
+      FieldName = 'PROMOTER_ID'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object StringField1: TStringField
+      FieldKind = fkLookup
+      FieldName = 'FULLNAME'
+      Index = 7
+      KeyFields = 'PROMOTER_ID'
+      LookupCache = False
+      LookupDataSet = SQLQuery3
+      LookupKeyFields = 'ID'
+      LookupResultField = 'FULLNAME'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1020
+    end
+  end
+  object SQLQuery6: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 1020
+      end    
+      item
+        Name = 'DATE_ENTRY'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATE_SUSPENDED'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATE_COURT'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATE_JUDGEMENT'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'PROMOTER_ID'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from appeals where date_entry BETWEEN :start1 and :start2 AND date_court IS NOT NULL'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'start1'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'start2'
+        ParamType = ptInput
+      end>
+    left = 280
+    top = 80
+    object SQLQuery6ID: TLongintField
+      FieldKind = fkData
+      FieldName = 'ID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLQuery6NAME: TStringField
+      FieldKind = fkData
+      FieldName = 'NAME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1020
+    end
+    object SQLQuery6DATE_ENTRY: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_ENTRY'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery6DATE_SUSPENDED: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_SUSPENDED'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery6DATE_COURT: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_COURT'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery6DATE_JUDGEMENT: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_JUDGEMENT'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery6PROMOTER_ID: TLongintField
+      FieldKind = fkData
+      FieldName = 'PROMOTER_ID'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object StringField2: TStringField
+      FieldKind = fkLookup
+      FieldName = 'FULLNAME'
+      Index = 7
+      KeyFields = 'PROMOTER_ID'
+      LookupCache = False
+      LookupDataSet = SQLQuery3
+      LookupKeyFields = 'ID'
+      LookupResultField = 'FULLNAME'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1020
+    end
+  end
+  object SQLQuery7: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 1020
+      end    
+      item
+        Name = 'DATE_ENTRY'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATE_SUSPENDED'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATE_COURT'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATE_JUDGEMENT'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'PROMOTER_ID'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from appeals where date_court IS NOT NULL'
+    )
+    Params = <>
+    left = 280
+    top = 152
+    object SQLQuery7ID: TLongintField
+      FieldKind = fkData
+      FieldName = 'ID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLQuery7NAME: TStringField
+      FieldKind = fkData
+      FieldName = 'NAME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1020
+    end
+    object SQLQuery7DATE_ENTRY: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_ENTRY'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery7DATE_SUSPENDED: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_SUSPENDED'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery7DATE_COURT: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_COURT'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery7DATE_JUDGEMENT: TDateField
+      FieldKind = fkData
+      FieldName = 'DATE_JUDGEMENT'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQuery7PROMOTER_ID: TLongintField
+      FieldKind = fkData
+      FieldName = 'PROMOTER_ID'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object StringField3: TStringField
+      FieldKind = fkLookup
+      FieldName = 'FULLNAME'
+      Index = 7
+      KeyFields = 'PROMOTER_ID'
+      LookupCache = False
+      LookupDataSet = SQLQuery3
+      LookupKeyFields = 'ID'
+      LookupResultField = 'FULLNAME'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1020
+    end
+  end
+  object SQLQuery8: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction2
+    Params = <>
+    left = 32
+    top = 216
+  end
+  object SQLQuery9: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction2
+    Params = <>
+    left = 112
+    top = 216
+  end
+end
