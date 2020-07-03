@@ -52,7 +52,7 @@ begin
     begin
      e:=appeals.SQLQuery8.FieldByName('date_court').AsDateTime;
      DecodeDate(e,y,m,d);
-     if m = AMonth and y=AYear then
+     if (m = AMonth) and (y=AYear) then
      begin
       AddHoliday(d, Holidays);
      end;
